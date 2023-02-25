@@ -1,0 +1,585 @@
+
+
+
+78K0R Linker W1.80                            Date:24 Feb 2023 Page:   1
+
+Command:   -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\
+           RL78\Devicefile -_msgoff -dV1.04\smprl78\pfdl_sample_linker_f
+           ile.dr -oDefaultBuild\Single_Phase_Starter_20Pin.lmf -gi00000
+           000000000000000h -go04h,1E00h,512 -gb0EF71E0H -mi0 -s -pDefau
+           ltBuild\Single_Phase_Starter_20Pin.map C:\Program Files (x86)
+           \Renesas Electronics\CS+\CACX\CA78K0R\V1.72\lib78k0r\s0rll.re
+           l DefaultBuild\r_systeminit.rel DefaultBuild\r_cg_cgc.rel Def
+           aultBuild\r_cg_cgc_user.rel DefaultBuild\r_cg_port.rel Defaul
+           tBuild\r_cg_port_user.rel DefaultBuild\r_cg_adc.rel DefaultBu
+           ild\r_cg_adc_user.rel DefaultBuild\r_cg_timer.rel DefaultBuil
+           d\r_cg_timer_user.rel DefaultBuild\r_cg_lvd.rel DefaultBuild\
+           r_cg_lvd_user.rel DefaultBuild\r_main_OV_UV_OC_UC_30SecAutoSt
+           art.rel -bV1.04\librl78\pfdl.lib -bcl0ram.lib -bcl0rm.lib -bc
+           l0rmf.lib -iC:\Program Files (x86)\Renesas Electronics\CS+\CA
+           CX\CA78K0R\V1.72\lib78k0r
+Para-file:
+Out-file:  DefaultBuild\Single_Phase_Starter_20Pin.lmf
+Map-file:  DefaultBuild\Single_Phase_Starter_20Pin.map
+Direc-file:V1.04\smprl78\pfdl_sample_linker_file.dr
+Directive: ;============================================================
+           =====================================
+           ; Project      = Data Flash Library, MF3 single voltage flash
+           
+           ; Module       = pfdl_linker_file.dr
+           ; Device:      = RL78/G12,G13,G14
+           ; Version      = V1.04
+           ; Date         = 12.04.2011 17:22:50
+           ;============================================================
+           =====================================
+           ;                                  COPYRIGHT
+           ;============================================================
+           =====================================
+           ; Copyright (c) 2011 by Renesas Electronics Europe GmbH, a co
+           mpany of the Renesas Electronics) GmbH,
+           ; Corporation. All rights reserved.
+           ;============================================================
+           =====================================
+           ; Purpose:
+           ;              linker sample file
+           ;
+           ;============================================================
+           =====================================
+           ;
+           ; Warranty Disclaimer
+           ;
+           ; Because the Product(s) is licensed free of charge, there is
+            no warranty of any kind whatsoever
+           ; and expressly disclaimed and excluded by Renesas, either ex
+           pressed or implied, including but
+           ; not limited to those for non-infringement of intellectual p
+           roperty, merchantability and/or
+           ; fitness for the particular purpose.
+           ; Renesas shall not have any obligation to maintain, service 
+           or provide bug fixes for the
+           ; supplied Product(s) and/or the Application.
+           ;
+           ; Each User is solely responsible for determining the appropr
+           iateness of using the Product(s)
+           ; and assumes all risks associated with its exercise of right
+           s under this Agreement, including,
+           ; but not limited to the risks and costs of program errors, c
+           ompliance with applicable laws,
+           ; damage to or loss of data, programs or equipment, and unava
+           ilability or interruption of
+           ; operations.
+           ;
+           ; Limitation of Liability
+           ;
+           ; In no event shall Renesas be liable to the User for any inc
+           idental, consequential, indirect,
+           ; or punitive damage (including but not limited to lost profi
+           ts) regardless of whether such
+           ; liability is based on breach of contract, tort, strict liab
+           ility, breach of warranties,
+           ; failure of essential purpose or otherwise and even if advis
+           ed of the possibility of such
+           ; damages. Renesas shall not be liable for any services or pr
+           oducts provided by third party
+           ; vendors, developers or consultants identified or referred t
+           o the User by Renesas in
+           ; connection with the Product(s) and/or the Application.
+           ;
+           ;============================================================
+           =====================================
+           
+           
+           ; -----------------------------------------------------------
+           
+           ; Redefined default data segment RAM
+           ; -----------------------------------------------------------
+           
+           MEMORY RAM : ( 0FFC00H , 001F4H )
+           MEMORY RAM_SADDR : ( 0FFDF4H , 0010BH )
+           
+           ; -----------------------------------------------------------
+           
+           ; Merge PFDL_COD segment ROM memory area
+           ; -----------------------------------------------------------
+           
+           MERGE PFDL_COD:=ROM
+
+
+*** Link information ***
+
+    43 output segment(s)
+ 1CD9H byte(s) real data
+  1629 symbol(s) defined
+
+
+*** Memory map ***
+
+
+  SPACE=REGULAR
+
+  MEMORY=ROM
+  BASE ADDRESS=00000H   SIZE=02000H
+         OUTPUT   INPUT    INPUT      BASE      SIZE
+         SEGMENT  SEGMENT  MODULE     ADDRESS
+         @@VECT00                     00000H    00002H  CSEG AT
+                  @@VECT00 @cstart    00000H    00002H
+         @@CNST                       00002H    00000H  CSEG UNITP
+                  @@CNST   @cstart    00002H    00000H
+                  @@CNST   r_systeminit
+                                      00002H    00000H
+                  @@CNST   r_cg_cgc   00002H    00000H
+                  @@CNST   r_cg_cgc_user
+                                      00002H    00000H
+                  @@CNST   r_cg_port
+                                      00002H    00000H
+                  @@CNST   r_cg_port_user
+                                      00002H    00000H
+                  @@CNST   r_cg_adc   00002H    00000H
+                  @@CNST   r_cg_adc_user
+                                      00002H    00000H
+                  @@CNST   r_cg_timer
+                                      00002H    00000H
+                  @@CNST   r_cg_timer_user
+                                      00002H    00000H
+                  @@CNST   r_cg_lvd   00002H    00000H
+                  @@CNST   r_cg_lvd_user
+                                      00002H    00000H
+                  @@CNST   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  @cstart    00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_systeminit
+                                      00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_cgc   00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_cgc_user
+                                      00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_port
+                                      00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_port_user
+                                      00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_adc   00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_adc_user
+                                      00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_timer
+                                      00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_timer_user
+                                      00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_lvd   00002H    00000H
+         @@CNSTL                      00002H    00000H  CSEG PAGE64KP
+                  @@CNSTL  r_cg_lvd_user
+                                      00002H    00000H
+         @@RLINIT                     00002H    00000H  CSEG UNIT64KP
+                  @@RLINIT @cstart    00002H    00000H
+                  @@RLINIT r_systeminit
+                                      00002H    00000H
+                  @@RLINIT r_cg_cgc   00002H    00000H
+                  @@RLINIT r_cg_cgc_user
+                                      00002H    00000H
+                  @@RLINIT r_cg_port
+                                      00002H    00000H
+                  @@RLINIT r_cg_port_user
+                                      00002H    00000H
+                  @@RLINIT r_cg_adc   00002H    00000H
+                  @@RLINIT r_cg_adc_user
+                                      00002H    00000H
+                  @@RLINIT r_cg_timer
+                                      00002H    00000H
+                  @@RLINIT r_cg_timer_user
+                                      00002H    00000H
+                  @@RLINIT r_cg_lvd   00002H    00000H
+                  @@RLINIT r_cg_lvd_user
+                                      00002H    00000H
+                  @@RLINIT r_main_OV_UV_OC_UC_30SecAutoStart
+                                      00002H    00000H
+                  @@RLINIT @rom       00002H    00000H
+         @@R_INIS                     00002H    00000H  CSEG UNIT64KP
+                  @@R_INIS @cstart    00002H    00000H
+                  @@R_INIS r_systeminit
+                                      00002H    00000H
+                  @@R_INIS r_cg_cgc   00002H    00000H
+                  @@R_INIS r_cg_cgc_user
+                                      00002H    00000H
+                  @@R_INIS r_cg_port
+                                      00002H    00000H
+                  @@R_INIS r_cg_port_user
+                                      00002H    00000H
+                  @@R_INIS r_cg_adc   00002H    00000H
+                  @@R_INIS r_cg_adc_user
+                                      00002H    00000H
+                  @@R_INIS r_cg_timer
+                                      00002H    00000H
+                  @@R_INIS r_cg_timer_user
+                                      00002H    00000H
+                  @@R_INIS r_cg_lvd   00002H    00000H
+                  @@R_INIS r_cg_lvd_user
+                                      00002H    00000H
+                  @@R_INIS r_main_OV_UV_OC_UC_30SecAutoStart
+                                      00002H    00000H
+                  @@R_INIS @rom       00002H    00000H
+         @@CALT                       00002H    00000H  CSEG
+                  @@CALT   @cstart    00002H    00000H
+                  @@CALT   r_systeminit
+                                      00002H    00000H
+                  @@CALT   r_cg_cgc   00002H    00000H
+                  @@CALT   r_cg_cgc_user
+                                      00002H    00000H
+                  @@CALT   r_cg_port
+                                      00002H    00000H
+                  @@CALT   r_cg_port_user
+                                      00002H    00000H
+                  @@CALT   r_cg_adc   00002H    00000H
+                  @@CALT   r_cg_adc_user
+                                      00002H    00000H
+                  @@CALT   r_cg_timer
+                                      00002H    00000H
+                  @@CALT   r_cg_timer_user
+                                      00002H    00000H
+                  @@CALT   r_cg_lvd   00002H    00000H
+                  @@CALT   r_cg_lvd_user
+                                      00002H    00000H
+                  @@CALT   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      00002H    00000H
+         ??NMIROM                     00002H    00002H  CSEG
+* gap *                               00004H    00002H
+         @@VECT06                     00006H    00002H  CSEG AT
+                  @@VECT06 r_cg_lvd_user
+                                      00006H    00002H
+* gap *                               00008H    00018H
+         @@VECT20                     00020H    00002H  CSEG AT
+                  @@VECT20 r_cg_timer_user
+                                      00020H    00002H
+* gap *                               00022H    00006H
+         @@VECT28                     00028H    00002H  CSEG AT
+                  @@VECT28 r_cg_adc_user
+                                      00028H    00002H
+         @@CNSTL                      0002AH    00036H  CSEG PAGE64KP
+                  @@CNSTL  r_main_OV_UV_OC_UC_30SecAutoStart
+                                      0002AH    00036H
+         @@R_INIT                     00060H    0002AH  CSEG UNIT64KP
+                  @@R_INIT @cstart    00060H    00000H
+                  @@R_INIT r_systeminit
+                                      00060H    00000H
+                  @@R_INIT r_cg_cgc   00060H    00000H
+                  @@R_INIT r_cg_cgc_user
+                                      00060H    00000H
+                  @@R_INIT r_cg_port
+                                      00060H    00000H
+                  @@R_INIT r_cg_port_user
+                                      00060H    00000H
+                  @@R_INIT r_cg_adc   00060H    00000H
+                  @@R_INIT r_cg_adc_user
+                                      00060H    00000H
+                  @@R_INIT r_cg_timer
+                                      00060H    00000H
+                  @@R_INIT r_cg_timer_user
+                                      00060H    00000H
+                  @@R_INIT r_cg_lvd   00060H    00000H
+                  @@R_INIT r_cg_lvd_user
+                                      00060H    00000H
+                  @@R_INIT r_main_OV_UV_OC_UC_30SecAutoStart
+                                      00060H    0002AH
+                  @@R_INIT @rom       0008AH    00000H
+* gap *                               0008AH    00036H
+         ?CSEGOB0                     000C0H    00004H  CSEG OPT_BYTE
+         @@CODE                       000C4H    00000H  CSEG BASE
+                  @@CODE   r_systeminit
+                                      000C4H    00000H
+                  @@CODE   r_cg_cgc   000C4H    00000H
+                  @@CODE   r_cg_cgc_user
+                                      000C4H    00000H
+                  @@CODE   r_cg_port
+                                      000C4H    00000H
+                  @@CODE   r_cg_port_user
+                                      000C4H    00000H
+                  @@CODE   r_cg_adc   000C4H    00000H
+                  @@CODE   r_cg_adc_user
+                                      000C4H    00000H
+                  @@CODE   r_cg_timer
+                                      000C4H    00000H
+                  @@CODE   r_cg_timer_user
+                                      000C4H    00000H
+                  @@CODE   r_cg_lvd   000C4H    00000H
+                  @@CODE   r_cg_lvd_user
+                                      000C4H    00000H
+                  @@CODE   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      000C4H    00000H
+         ?CSEGSI                      000C4H    0000AH  CSEG
+         ?OCDSTAD                     000CEH    0000AH  CSEG
+         @@LCODE                      000D8H    00547H  CSEG BASE
+                  @@LCODE  @cstart    000D8H    000ADH
+                  @@LCODE  @lmul      00185H    0002BH
+                  @@LCODE  @lsdiv     001B0H    00039H
+                  @@LCODE  @ludiv     001E9H    0003FH
+                  @@LCODE  m_fmul     00228H    0012BH
+                  @@LCODE  @ladd      00353H    0000FH
+                  @@LCODE  @lsub      00362H    00012H
+                  @@LCODE  @llsh      00374H    0001BH
+                  @@LCODE  @lursh     0038FH    0001FH
+                  @@LCODE  @lscmp     003AEH    00014H
+                  @@LCODE  @lbor      003C2H    00014H
+                  @@LCODE  @LND0      003D6H    0000AH
+                  @@LCODE  @LN0D      003E0H    00009H
+                  @@LCODE  @DN4DEC    003E9H    00018H
+                  @@LCODE  m_fcom1    00401H    000CFH
+                  @@LCODE  m_fcom5    004D0H    0002AH
+                  @@LCODE  m_fcom6    004FAH    0001FH
+                  @@LCODE  m_ftols    00519H    00078H
+                  @@LCODE  m_ftolu    00591H    0002BH
+                  @@LCODE  m_lstof    005BCH    00016H
+                  @@LCODE  m_lutof    005D2H    0004DH
+         @@BASE                       0061FH    00090H  CSEG BASE
+                  @@BASE   r_systeminit
+                                      0061FH    00000H
+                  @@BASE   r_cg_cgc   0061FH    00000H
+                  @@BASE   r_cg_cgc_user
+                                      0061FH    00000H
+                  @@BASE   r_cg_port
+                                      0061FH    00000H
+                  @@BASE   r_cg_port_user
+                                      0061FH    00000H
+                  @@BASE   r_cg_adc   0061FH    00000H
+                  @@BASE   r_cg_adc_user
+                                      0061FH    00030H
+                  @@BASE   r_cg_timer
+                                      0064FH    00000H
+                  @@BASE   r_cg_timer_user
+                                      0064FH    00030H
+                  @@BASE   r_cg_lvd   0067FH    00000H
+                  @@BASE   r_cg_lvd_user
+                                      0067FH    00030H
+                  @@BASE   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      006AFH    00000H
+* gap *                               006AFH    00001H
+         @@CNSTL                      006B0H    000CEH  CSEG PAGE64KP
+                  @@CNSTL  m_fcom5    006B0H    000CEH
+         PFDL_COD                     0077EH    000AFH  CSEG UNIT64KP
+                  PFDL_COD pfdl       0077EH    00096H
+                  PFDL_COD pfdl_version
+                                      00814H    00019H
+         @@CODEL                      0082DH    012A3H  CSEG
+                  @@CODEL  r_systeminit
+                                      0082DH    00027H
+                  @@CODEL  r_cg_cgc   00854H    00010H
+                  @@CODEL  r_cg_cgc_user
+                                      00864H    00005H
+                  @@CODEL  r_cg_port
+                                      00869H    00021H
+                  @@CODEL  r_cg_port_user
+                                      0088AH    00000H
+                  @@CODEL  r_cg_adc   0088AH    00055H
+                  @@CODEL  r_cg_adc_user
+                                      008DFH    00000H
+                  @@CODEL  r_cg_timer
+                                      008DFH    00077H
+                  @@CODEL  r_cg_timer_user
+                                      00956H    00000H
+                  @@CODEL  r_cg_lvd   00956H    00014H
+                  @@CODEL  r_cg_lvd_user
+                                      0096AH    00000H
+                  @@CODEL  r_main_OV_UV_OC_UC_30SecAutoStart
+                                      0096AH    01166H
+         @@LCODEL                     01AD0H    00060H  CSEG
+                  @@LCODEL @stkinit   01AD0H    00044H
+                  @@LCODEL exit       01B14H    0001CH
+* gap *                               01B30H    002D0H
+         ??OCDROM                     01E00H    00200H  CSEG
+
+  MEMORY=RAM
+  BASE ADDRESS=FFC00H   SIZE=001F4H
+         OUTPUT   INPUT    INPUT      BASE      SIZE
+         SEGMENT  SEGMENT  MODULE     ADDRESS
+         @@DATA                       FFC00H    00128H  DSEG BASEP
+                  @@DATA   @cstart    FFC00H    000BAH
+                  @@DATA   r_systeminit
+                                      FFCBAH    00000H
+                  @@DATA   r_cg_cgc   FFCBAH    00000H
+                  @@DATA   r_cg_cgc_user
+                                      FFCBAH    00000H
+                  @@DATA   r_cg_port
+                                      FFCBAH    00000H
+                  @@DATA   r_cg_port_user
+                                      FFCBAH    00000H
+                  @@DATA   r_cg_adc   FFCBAH    00000H
+                  @@DATA   r_cg_adc_user
+                                      FFCBAH    00000H
+                  @@DATA   r_cg_timer
+                                      FFCBAH    00000H
+                  @@DATA   r_cg_timer_user
+                                      FFCBAH    00000H
+                  @@DATA   r_cg_lvd   FFCBAH    00000H
+                  @@DATA   r_cg_lvd_user
+                                      FFCBAH    00000H
+                  @@DATA   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      FFCBAH    0006EH
+                  @@DATA   @rom       FFD28H    00000H
+         @@INIT                       FFD28H    0002AH  DSEG BASEP
+                  @@INIT   @cstart    FFD28H    00000H
+                  @@INIT   r_systeminit
+                                      FFD28H    00000H
+                  @@INIT   r_cg_cgc   FFD28H    00000H
+                  @@INIT   r_cg_cgc_user
+                                      FFD28H    00000H
+                  @@INIT   r_cg_port
+                                      FFD28H    00000H
+                  @@INIT   r_cg_port_user
+                                      FFD28H    00000H
+                  @@INIT   r_cg_adc   FFD28H    00000H
+                  @@INIT   r_cg_adc_user
+                                      FFD28H    00000H
+                  @@INIT   r_cg_timer
+                                      FFD28H    00000H
+                  @@INIT   r_cg_timer_user
+                                      FFD28H    00000H
+                  @@INIT   r_cg_lvd   FFD28H    00000H
+                  @@INIT   r_cg_lvd_user
+                                      FFD28H    00000H
+                  @@INIT   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      FFD28H    0002AH
+                  @@INIT   @rom       FFD52H    00000H
+         @@INIS                       FFD52H    00000H  DSEG UNITP
+                  @@INIS   @cstart    FFD52H    00000H
+                  @@INIS   r_systeminit
+                                      FFD52H    00000H
+                  @@INIS   r_cg_cgc   FFD52H    00000H
+                  @@INIS   r_cg_cgc_user
+                                      FFD52H    00000H
+                  @@INIS   r_cg_port
+                                      FFD52H    00000H
+                  @@INIS   r_cg_port_user
+                                      FFD52H    00000H
+                  @@INIS   r_cg_adc   FFD52H    00000H
+                  @@INIS   r_cg_adc_user
+                                      FFD52H    00000H
+                  @@INIS   r_cg_timer
+                                      FFD52H    00000H
+                  @@INIS   r_cg_timer_user
+                                      FFD52H    00000H
+                  @@INIS   r_cg_lvd   FFD52H    00000H
+                  @@INIS   r_cg_lvd_user
+                                      FFD52H    00000H
+                  @@INIS   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      FFD52H    00000H
+                  @@INIS   @rom       FFD52H    00000H
+         @@DATS                       FFD52H    00000H  DSEG UNITP
+                  @@DATS   @cstart    FFD52H    00000H
+                  @@DATS   r_systeminit
+                                      FFD52H    00000H
+                  @@DATS   r_cg_cgc   FFD52H    00000H
+                  @@DATS   r_cg_cgc_user
+                                      FFD52H    00000H
+                  @@DATS   r_cg_port
+                                      FFD52H    00000H
+                  @@DATS   r_cg_port_user
+                                      FFD52H    00000H
+                  @@DATS   r_cg_adc   FFD52H    00000H
+                  @@DATS   r_cg_adc_user
+                                      FFD52H    00000H
+                  @@DATS   r_cg_timer
+                                      FFD52H    00000H
+                  @@DATS   r_cg_timer_user
+                                      FFD52H    00000H
+                  @@DATS   r_cg_lvd   FFD52H    00000H
+                  @@DATS   r_cg_lvd_user
+                                      FFD52H    00000H
+                  @@DATS   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      FFD52H    00000H
+                  @@DATS   @rom       FFD52H    00000H
+         @@INITL                      FFD52H    00000H  DSEG UNIT64KP
+                  @@INITL  @cstart    FFD52H    00000H
+                  @@INITL  r_systeminit
+                                      FFD52H    00000H
+                  @@INITL  r_cg_cgc   FFD52H    00000H
+                  @@INITL  r_cg_cgc_user
+                                      FFD52H    00000H
+                  @@INITL  r_cg_port
+                                      FFD52H    00000H
+                  @@INITL  r_cg_port_user
+                                      FFD52H    00000H
+                  @@INITL  r_cg_adc   FFD52H    00000H
+                  @@INITL  r_cg_adc_user
+                                      FFD52H    00000H
+                  @@INITL  r_cg_timer
+                                      FFD52H    00000H
+                  @@INITL  r_cg_timer_user
+                                      FFD52H    00000H
+                  @@INITL  r_cg_lvd   FFD52H    00000H
+                  @@INITL  r_cg_lvd_user
+                                      FFD52H    00000H
+                  @@INITL  r_main_OV_UV_OC_UC_30SecAutoStart
+                                      FFD52H    00000H
+                  @@INITL  @rom       FFD52H    00000H
+         @@DATAL                      FFD52H    00000H  DSEG UNIT64KP
+                  @@DATAL  @cstart    FFD52H    00000H
+                  @@DATAL  r_systeminit
+                                      FFD52H    00000H
+                  @@DATAL  r_cg_cgc   FFD52H    00000H
+                  @@DATAL  r_cg_cgc_user
+                                      FFD52H    00000H
+                  @@DATAL  r_cg_port
+                                      FFD52H    00000H
+                  @@DATAL  r_cg_port_user
+                                      FFD52H    00000H
+                  @@DATAL  r_cg_adc   FFD52H    00000H
+                  @@DATAL  r_cg_adc_user
+                                      FFD52H    00000H
+                  @@DATAL  r_cg_timer
+                                      FFD52H    00000H
+                  @@DATAL  r_cg_timer_user
+                                      FFD52H    00000H
+                  @@DATAL  r_cg_lvd   FFD52H    00000H
+                  @@DATAL  r_cg_lvd_user
+                                      FFD52H    00000H
+                  @@DATAL  r_main_OV_UV_OC_UC_30SecAutoStart
+                                      FFD52H    00000H
+                  @@DATAL  @rom       FFD52H    00000H
+* gap *                               FFD52H    000A2H
+
+  MEMORY=RAM_SADDR
+  BASE ADDRESS=FFDF4H   SIZE=0010BH
+         OUTPUT   INPUT    INPUT      BASE      SIZE
+         SEGMENT  SEGMENT  MODULE     ADDRESS
+* gap *                               FFDF4H    0002CH
+         @@BITS                       FFE20H    00002H  BSEG
+                  @@BITS   @cstart    FFE20H.0  00000H.0
+                  @@BITS   r_systeminit
+                                      FFE20H.0  00000H.0
+                  @@BITS   r_cg_cgc   FFE20H.0  00000H.0
+                  @@BITS   r_cg_cgc_user
+                                      FFE20H.0  00000H.0
+                  @@BITS   r_cg_port
+                                      FFE20H.0  00000H.0
+                  @@BITS   r_cg_port_user
+                                      FFE20H.0  00000H.0
+                  @@BITS   r_cg_adc   FFE20H.0  00000H.0
+                  @@BITS   r_cg_adc_user
+                                      FFE20H.0  00000H.0
+                  @@BITS   r_cg_timer
+                                      FFE20H.0  00000H.0
+                  @@BITS   r_cg_timer_user
+                                      FFE20H.0  00000H.0
+                  @@BITS   r_cg_lvd   FFE20H.0  00000H.0
+                  @@BITS   r_cg_lvd_user
+                                      FFE20H.0  00000H.0
+                  @@BITS   r_main_OV_UV_OC_UC_30SecAutoStart
+                                      FFE20H.0  00001H.2
+* gap *                               FFE22H    000B2H
+         @@SEGREG                     FFED4H    00004H  DSEG AT
+                  @@SEGREG @SEGREG    FFED4H    00004H
+         @@RTARG0                     FFED8H    00008H  DSEG AT
+                  @@RTARG0 @RTARG0    FFED8H    00008H
+* gap *                               FFEE0H    0001FH
+
+
+ Target chip : R5F10268
+ Device file : V1.12
+
